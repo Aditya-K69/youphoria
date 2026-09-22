@@ -6,38 +6,24 @@ import { db } from "./db/index";
 import { logger } from "./lib/logger";
 import { errorHandler } from "./middleware/error";
 
+import userRouter from "./routes/user.routes";
+
 const app: Express = express();
 
 app.use(express.json());
 
-/*
- * HTTP request logging.
- *
- * Every request gets:
- * - request ID
- * - method
- * - URL
- * - status code
- * - response time
- */
 app.use(
   pinoHttp({
     logger,
   }),
 );
 
-/*
- * Health check
- */
 app.get("/", (_req: Request, res: Response) => {
   res.status(200).json({
     status: "ok",
   });
 });
 
-/*
- * Database health check
- */
 app.get("/dbhealth", async (_req: Request, res: Response) => {
   try {
     await db.execute(sql`SELECT 1`);
@@ -61,11 +47,8 @@ app.get("/dbhealth", async (_req: Request, res: Response) => {
   }
 });
 
-/*
- * Global error handler.
- *
- * This MUST be registered after all routes and middleware.
- */
+app.use("/users", userRouter);
+
 app.use(errorHandler);
 
 const PORT = Number(process.env.PORT) || 3000;

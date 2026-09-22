@@ -10,7 +10,7 @@ import {
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
 
-  username: varchar("username", { length: 255 }).notNull(),
+  username: varchar("username", { length: 255 }).notNull().unique(),
 
   password: text("password").notNull(),
 
