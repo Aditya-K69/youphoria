@@ -12,7 +12,10 @@ import {
   getUser,
   updateUser,
   deleteUser,
+  getSelf,
 } from "../controllers/user.controller";
+
+import { auth } from "../middleware/auth";
 
 const router = Router();
 
@@ -22,6 +25,7 @@ router.post("/bulk", createUsers);
 
 // Fetch
 router.get("/", getUsers);
+router.get("/self", auth, getSelf);
 router.get("/:id", getUser);
 
 // Update

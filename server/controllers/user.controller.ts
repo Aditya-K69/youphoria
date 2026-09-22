@@ -15,6 +15,7 @@ import { z } from "zod";
 
 import { db } from "../db/index";
 import { users } from "../db/schemas/user.schema";
+import type { AuthenticatedRequest } from "../middleware/auth";
 
 // -------------------------
 // Validation schemas
@@ -305,6 +306,42 @@ export const deleteUser = async (
     return res.status(200).json({
       success: true,
       data: deletedUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getSelf = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const userId = (req as AuthenticatedRequest).user.id;
+
+    const [user] = await db
+      .select({
+        id: users.id,
+        username: users.username,
+        isActive: users.isActive,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+      })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: user,
     });
   } catch (error) {
     next(error);

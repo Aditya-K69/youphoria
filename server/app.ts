@@ -7,6 +7,7 @@ import { logger } from "./lib/logger";
 import { errorHandler } from "./middleware/error";
 
 import userRouter from "./routes/user.routes";
+import authRouter from "./routes/auth.routes";
 
 const app: Express = express();
 
@@ -48,6 +49,7 @@ app.get("/dbhealth", async (_req: Request, res: Response) => {
 });
 
 app.use("/users", userRouter);
+app.use("/login", authRouter);
 
 app.use(errorHandler);
 
