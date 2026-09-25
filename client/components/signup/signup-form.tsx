@@ -11,27 +11,14 @@ export function SignupForm() {
   return (
     <form className="flex w-full max-w-sm flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <Label htmlFor="name" className={labelClasses}>
-          Full Name
+        <Label htmlFor="username" className={labelClasses}>
+          Username
         </Label>
         <Input
-          id="name"
-          name="name"
+          id="username"
+          name="username"
           type="text"
-          placeholder="Jane Doe"
-          className={fieldClasses}
-        />
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="email" className={labelClasses}>
-          Email
-        </Label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="jane@example.com"
+          placeholder="saulgoodman69"
           className={fieldClasses}
         />
       </div>
@@ -43,19 +30,6 @@ export function SignupForm() {
         <Input
           id="password"
           name="password"
-          type="password"
-          placeholder="••••••••"
-          className={fieldClasses}
-        />
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="confirm-password" className={labelClasses}>
-          Confirm Password
-        </Label>
-        <Input
-          id="confirm-password"
-          name="confirm-password"
           type="password"
           placeholder="••••••••"
           className={fieldClasses}

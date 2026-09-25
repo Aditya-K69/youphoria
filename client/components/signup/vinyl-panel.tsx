@@ -7,13 +7,8 @@ interface VinylPanelProps {
 
 export function VinylPanel({ className }: VinylPanelProps) {
   return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-3xl bg-[#E8A93E]",
-        className,
-      )}
-    >
-      <div className="animate-vinyl-reveal relative h-full min-h-[280px] w-full">
+    <div className={cn(className)}>
+      <div className="animate-vinyl-reveal relative h-full min-h-70 w-full">
         <Image
           src="/Vinyl.png"
           alt="Two turntables spinning vinyl records"

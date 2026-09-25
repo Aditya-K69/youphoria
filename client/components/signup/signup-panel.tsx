@@ -9,7 +9,7 @@ export function SignupPanel({ className }: SignupPanelProps) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center gap-10 rounded-3xl bg-[#2E1D00] px-8 py-10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)] sm:px-14 sm:py-14",
+        "flex flex-col items-center gap-10 rounded-3xl bg-[#1C1916] px-8 py-10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)] sm:px-14 sm:py-14",
         className,
       )}
     >
