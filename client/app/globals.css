@@ -187,4 +187,40 @@
     animation: marquee-drift 9s ease-in-out infinite;
     will-change: transform;
   }
+
+  /* Top-down letter reveal, used by the vertical TUNE / IN wordmark */
+  @keyframes letter-drop {
+    0% {
+      transform: translateY(-110%);
+      opacity: 0;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-letter-drop {
+    animation: letter-drop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Wipe the vinyl image in as if it's sliding out from behind the signup panel */
+  @keyframes vinyl-reveal {
+    0% {
+      clip-path: inset(0 0 0 100%);
+      transform: translateX(-4%);
+    }
+    100% {
+      clip-path: inset(0 0 0 0%);
+      transform: translateX(0);
+    }
+  }
+
+  .animate-vinyl-reveal {
+    animation: vinyl-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.35s;
+  }
 }
